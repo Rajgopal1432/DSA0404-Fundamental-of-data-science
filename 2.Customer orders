@@ -1,0 +1,18 @@
+import pandas as pd
+data = {
+    'customer ID': ['C001', 'C002', 'C003', 'C004', 'C005'],
+    'order date': ['2022-01-01', '2022-01-02', '2022-01-03', '2022-01-04', '2022-01-05'],
+    'product name': ['Product A', 'Product B', 'Product C', 'Product D', 'Product E'],
+    'order quantity': [10, 20, 30, 40, 50]
+       }
+df = pd.DataFrame(data)
+print(df)
+orders_per_customer=df.groupby('customer ID').size()
+avg_order_quantity_per_product=df.groupby('product name')['order quantity'].mean()
+earliest_order_date=df['order date'].min()
+latest_order_date=df['order date'].max()
+print(orders_per_customer)
+print(avg_order_quantity_per_product)
+print("Earliest order Date :",earliest_order_date)
+print("Latest order Date :",latest_order_date)
+
